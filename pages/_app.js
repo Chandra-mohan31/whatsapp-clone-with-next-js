@@ -9,9 +9,8 @@ import firebase from "firebase";
 
 function MyApp({ Component, pageProps }) {
   const [user,loading] = useAuthState(auth);
-  // if(true){
-  //   return <Loading />
-  // }
+  
+
   useEffect(() => {
     if(user){
         db.collection('users').doc(user.uid).set({
@@ -24,10 +23,15 @@ function MyApp({ Component, pageProps }) {
     }
     
   }, [user])
-  if(!user){
+  if(loading){
+    return <Loading />
+  }
+  else if(!user){
     return <Login />
   }
+  else{
   return <Component {...pageProps} />
+  }
 }
 
 export default MyApp
