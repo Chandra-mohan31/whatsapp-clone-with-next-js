@@ -15,7 +15,7 @@ function Chat({id,users}) {
     console.log(recipientEmail);
     const recipient = recipientSnapshot?.docs?.[0]?.data();
     const enterChat = () => {
-        router.push('/chat/${id}');
+        router.push(`/chat/${id}`)
     }
     return (
         <Container onClick={enterChat}>
